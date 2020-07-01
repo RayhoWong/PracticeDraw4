@@ -22,7 +22,6 @@ class Practice10MatrixSkewView : View {
         val bitmapWidth = bitmap!!.width
         val bitmapHeight = bitmap!!.height
 
-
         canvas.save()
         myMatrix.reset()
         myMatrix.postSkew(0f, 0.5f, point1.x + bitmapWidth / 2.toFloat(), point1.y + bitmapHeight / 2.toFloat())
