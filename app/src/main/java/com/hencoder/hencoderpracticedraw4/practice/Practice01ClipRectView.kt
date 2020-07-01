@@ -21,7 +21,10 @@ class Practice01ClipRectView : View {
         super.onDraw(canvas)
         val left = (width - bitmap!!.width) / 2
         val top = (height - bitmap!!.height) / 2
+        canvas.save()
+        canvas.clipRect(left + 50, top + 50, left + 200, top + 200)
         canvas.drawBitmap(bitmap, left.toFloat(), top.toFloat(), paint)
+        canvas.restore()
     }
 
     init {

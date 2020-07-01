@@ -11,6 +11,7 @@ class Practice08MatrixScaleView : View {
     var bitmap: Bitmap? = null
     var point1 = Point(200, 200)
     var point2 = Point(600, 200)
+    val myMatrix = Matrix()
 
     constructor(context: Context?) : super(context) {}
     constructor(context: Context?, attrs: AttributeSet?) : super(context, attrs) {}
@@ -18,7 +19,19 @@ class Practice08MatrixScaleView : View {
 
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
+        val bitmapWidth = bitmap!!.width
+        val bitmapHeight = bitmap!!.height
+
+        canvas.save()
+        myMatrix.reset()
+        myMatrix.postScale(1.3f,1.3f,point1.x.toFloat() + bitmapWidth/2,point1.y.toFloat() + bitmapHeight/2)
+        canvas.concat(myMatrix)
         canvas.drawBitmap(bitmap, point1.x.toFloat(), point1.y.toFloat(), paint)
+        canvas.restore()
+
+        myMatrix.reset()
+        myMatrix.postScale(0.6f,1.6f,point2.x.toFloat() + bitmapWidth/2,point2.y.toFloat() + bitmapHeight/2)
+        canvas.concat(myMatrix)
         canvas.drawBitmap(bitmap, point2.x.toFloat(), point2.y.toFloat(), paint)
     }
 

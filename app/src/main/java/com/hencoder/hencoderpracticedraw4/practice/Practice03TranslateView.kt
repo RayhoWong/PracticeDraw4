@@ -18,8 +18,16 @@ class Practice03TranslateView : View {
 
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
+
+        canvas.save()
+        canvas.translate(-100f,-100f)
         canvas.drawBitmap(bitmap, point1.x.toFloat(), point1.y.toFloat(), paint)
+        canvas.restore()
+
+        canvas.save()
+        canvas.translate(200f,0f)
         canvas.drawBitmap(bitmap, point2.x.toFloat(), point2.y.toFloat(), paint)
+        canvas.restore()
     }
 
     init {

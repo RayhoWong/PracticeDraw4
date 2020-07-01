@@ -18,8 +18,16 @@ class Practice06SkewView : View {
 
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
+
+        canvas.save()
+        canvas.skew(0f,0.5f)
         canvas.drawBitmap(bitmap, point1.x.toFloat(), point1.y.toFloat(), paint)
+        canvas.restore()
+
+        canvas.save()
+        canvas.skew(-0.5f,0f)
         canvas.drawBitmap(bitmap, point2.x.toFloat(), point2.y.toFloat(), paint)
+        canvas.restore()
     }
 
     init {

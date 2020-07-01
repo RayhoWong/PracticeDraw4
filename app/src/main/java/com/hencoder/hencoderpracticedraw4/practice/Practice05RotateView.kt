@@ -18,8 +18,19 @@ class Practice05RotateView : View {
 
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
+        val bitmapWidth = bitmap!!.width
+        val bitmapHeight = bitmap!!.height
+
+        canvas.save()
+        canvas.rotate(180f, point1.x.toFloat() + bitmapWidth / 2, point1.y.toFloat() + bitmapHeight / 2)
         canvas.drawBitmap(bitmap, point1.x.toFloat(), point1.y.toFloat(), paint)
+        canvas.restore()
+
+        canvas.save()
+        canvas.rotate(45f, point2.x.toFloat() + bitmapWidth / 2, point2.y.toFloat() + bitmapHeight / 2)
         canvas.drawBitmap(bitmap, point2.x.toFloat(), point2.y.toFloat(), paint)
+        canvas.restore()
+
     }
 
     init {

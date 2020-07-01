@@ -11,6 +11,7 @@ class Practice07MatrixTranslateView : View {
     var bitmap: Bitmap? = null
     var point1 = Point(200, 200)
     var point2 = Point(600, 200)
+    val myMatrix = Matrix()
 
     constructor(context: Context?) : super(context) {}
     constructor(context: Context?, attrs: AttributeSet?) : super(context, attrs) {}
@@ -18,7 +19,17 @@ class Practice07MatrixTranslateView : View {
 
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
+
+        canvas.save()
+        myMatrix.reset()
+        myMatrix.postTranslate(-100f,-100f)
+        canvas.concat(myMatrix)
         canvas.drawBitmap(bitmap, point1.x.toFloat(), point1.y.toFloat(), paint)
+        canvas.restore()
+
+        myMatrix.reset()
+        myMatrix.postTranslate(200f,0f)
+        canvas.concat(myMatrix)
         canvas.drawBitmap(bitmap, point2.x.toFloat(), point2.y.toFloat(), paint)
     }
 
