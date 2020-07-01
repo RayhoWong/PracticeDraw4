@@ -20,6 +20,7 @@ class Practice10MatrixSkewView : View {
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
         val bitmapWidth = bitmap!!.width
+
         val bitmapHeight = bitmap!!.height
 
         canvas.save()
