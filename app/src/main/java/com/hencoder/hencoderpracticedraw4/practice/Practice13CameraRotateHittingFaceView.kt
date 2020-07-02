@@ -67,5 +67,9 @@ class Practice13CameraRotateHittingFaceView : View {
         animator.duration = 5000
         animator.interpolator = LinearInterpolator()
         animator.repeatCount = ValueAnimator.INFINITE
+        //避免糊脸效果
+        val displayMetrics = resources.displayMetrics
+        val newZ = -displayMetrics.density * 6
+        camera.setLocation(0f,0f,newZ)
     }
 }

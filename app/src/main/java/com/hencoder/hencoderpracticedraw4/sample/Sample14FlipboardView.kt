@@ -50,6 +50,7 @@ class Sample14FlipboardView : View {
         canvas.restore()
         // 第二遍绘制：下半部分
         canvas.save()
+        //degree是动态变化的
         if (degree < 90) {
             canvas.clipRect(0, centerY, width, height)
         } else {

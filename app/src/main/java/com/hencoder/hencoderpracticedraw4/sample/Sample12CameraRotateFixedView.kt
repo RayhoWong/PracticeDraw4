@@ -26,6 +26,7 @@ class Sample12CameraRotateFixedView : View {
         val center1Y = point1.y + bitmapHeight / 2
         val center2X = point2.x + bitmapWidth / 2
         val center2Y = point2.y + bitmapHeight / 2
+
         camera.save()
         myMatrix.reset()
         camera.rotateX(30f)
@@ -37,7 +38,6 @@ class Sample12CameraRotateFixedView : View {
         canvas.concat(myMatrix)
         canvas.drawBitmap(bitmap, point1.x.toFloat(), point1.y.toFloat(), paint)
         canvas.restore()
-
 
         camera.save()
         myMatrix.reset()
