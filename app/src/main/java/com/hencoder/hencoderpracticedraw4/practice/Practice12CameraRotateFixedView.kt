@@ -11,6 +11,8 @@ class Practice12CameraRotateFixedView : View {
     var bitmap: Bitmap? = null
     var point1 = Point(200, 200)
     var point2 = Point(600, 200)
+    var camera = Camera()
+    val myMatrix = Matrix()
 
     constructor(context: Context?) : super(context) {}
     constructor(context: Context?, attrs: AttributeSet?) : super(context, attrs) {}
@@ -18,8 +20,37 @@ class Practice12CameraRotateFixedView : View {
 
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
+        val bitmapWidth = bitmap!!.width
+        val bitmapHeight = bitmap!!.height
+        val center1X = point1.x + bitmapWidth / 2
+        val center1Y = point1.y + bitmapHeight / 2
+        val center2X = point2.x + bitmapWidth / 2
+        val center2Y = point2.y + bitmapHeight / 2
+
+        camera.save()
+        myMatrix.reset()
+        camera.rotateX(30f)
+        camera.getMatrix(myMatrix)
+        camera.restore()
+        //在三维旋转之前把绘制内容的中心点移动到原点，即旋转的轴心，然后在三维旋转后再把投影移动回来
+        myMatrix.preTranslate(-center1X.toFloat(),-center1Y.toFloat())
+        myMatrix.postTranslate(center1X.toFloat(),center1Y.toFloat())
+        canvas.save()
+        canvas.concat(myMatrix)
         canvas.drawBitmap(bitmap, point1.x.toFloat(), point1.y.toFloat(), paint)
+        canvas.restore()
+
+        camera.save()
+        myMatrix.reset()
+        camera.rotateY(30f)
+        camera.getMatrix(matrix)
+        camera.restore()
+        myMatrix.preTranslate(-center2X.toFloat(),-center2Y.toFloat())
+        myMatrix.postTranslate(center2X.toFloat(),center2Y.toFloat())
+        canvas.save()
+        canvas.concat(myMatrix)
         canvas.drawBitmap(bitmap, point2.x.toFloat(), point2.y.toFloat(), paint)
+        canvas.restore()
     }
 
     init {

@@ -37,6 +37,8 @@ class Sample12CameraRotateFixedView : View {
         canvas.concat(myMatrix)
         canvas.drawBitmap(bitmap, point1.x.toFloat(), point1.y.toFloat(), paint)
         canvas.restore()
+
+
         camera.save()
         myMatrix.reset()
         camera.rotateY(30f)
