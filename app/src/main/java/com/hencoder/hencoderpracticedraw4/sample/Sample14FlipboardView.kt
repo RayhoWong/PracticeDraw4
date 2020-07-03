@@ -14,6 +14,7 @@ class Sample14FlipboardView : View {
     var bitmap: Bitmap? = null
     var camera = Camera()
     var degree = 0f
+    //自定义属性动画
     var animator = ObjectAnimator.ofInt(this, "degree", 0, 180)
 
     constructor(context: Context?) : super(context) {}
@@ -30,6 +31,7 @@ class Sample14FlipboardView : View {
         animator.end()
     }
 
+    //自定义属性动画函数
     fun setDegree(degree: Int) {
         this.degree = degree.toFloat()
         invalidate()
